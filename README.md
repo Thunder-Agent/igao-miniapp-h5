@@ -49,4 +49,14 @@ index.html
 
 ## 远程访问
 
-发布地址将在 GitHub Pages 开通后更新。
+GitHub Pages:
+
+```text
+https://thunder-agent.github.io/igao-miniapp-h5/
+```
+
+GitHub 仓库:
+
+```text
+https://github.com/Thunder-Agent/igao-miniapp-h5
+```
