@@ -1,0 +1,11 @@
+{
+  "name": "igao-miniapp-h5",
+  "version": "1.0.0",
+  "private": true,
+  "description": "H5 replica and project analysis report for the iGao mini program.",
+  "scripts": {
+    "capture": "node scripts/capture-site.mjs",
+    "capture:report": "node scripts/capture-report.mjs",
+    "pdf": "node scripts/export-pdf.mjs"
+  }
+}

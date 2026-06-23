@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>i高专家小程序项目分析报告</title>
+    <style>
+      :root {
+        --blue: #185ee8;
+        --ink: #111827;
+        --muted: #667085;
+        --line: #e5e7eb;
+        --soft: #f5f8ff;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+        color: var(--ink);
+        background: #eef4ff;
+      }
+      .page {
+        width: min(1080px, calc(100vw - 32px));
+        margin: 24px auto;
+        background: white;
+        padding: 56px;
+        box-shadow: 0 18px 60px rgba(15, 23, 42, 0.12);
+      }
+      header {
+        border-bottom: 4px solid var(--blue);
+        padding-bottom: 24px;
+        margin-bottom: 32px;
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-size: 34px;
+        letter-spacing: 0;
+      }
+      h2 {
+        margin: 34px 0 14px;
+        font-size: 23px;
+        border-left: 5px solid var(--blue);
+        padding-left: 12px;
+      }
+      h3 {
+        margin: 22px 0 10px;
+        font-size: 18px;
+      }
+      p, li {
+        line-height: 1.75;
+        font-size: 15px;
+      }
+      .meta {
+        color: var(--muted);
+        margin: 0;
+      }
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin: 26px 0;
+      }
+      .summary-card {
+        background: var(--soft);
+        border: 1px solid #dbe7ff;
+        border-radius: 14px;
+        padding: 16px;
+      }
+      .summary-card strong {
+        display: block;
+        color: var(--blue);
+        font-size: 24px;
+        margin-bottom: 6px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0 22px;
+        font-size: 14px;
+      }
+      th, td {
+        border: 1px solid var(--line);
+        padding: 10px 12px;
+        vertical-align: top;
+        text-align: left;
+      }
+      th {
+        background: #f8fafc;
+      }
+      .evidence {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        display: block;
+        margin: 16px 0 8px;
+      }
+      .priority {
+        display: grid;
+        gap: 12px;
+      }
+      .priority article {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 14px 16px;
+        background: #fff;
+      }
+      .tag {
+        display: inline-block;
+        min-width: 42px;
+        text-align: center;
+        border-radius: 999px;
+        padding: 3px 8px;
+        color: white;
+        background: var(--blue);
+        font-weight: 700;
+        margin-right: 8px;
+      }
+      .risk { color: #b42318; font-weight: 700; }
+      .ok { color: #067647; font-weight: 700; }
+      footer {
+        margin-top: 40px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+      }
+      @media print {
+        body { background: white; }
+        .page { width: auto; margin: 0; box-shadow: none; padding: 34px; }
+        h2 { break-after: avoid; }
+        table, .priority article { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>i高专家小程序项目分析报告</h1>
+        <p class="meta">基于已登录状态的小程序界面审计和 H5 复刻实施结果 | 2026-06-23</p>
+      </header>
+
+      <section>
+        <h2>一、项目目标</h2>
+        <p>本项目围绕“i高专家生长发育”小程序完成三个交付：使用 H5 复刻主要界面，使用 HTML 生成项目分析报告并转换为 PDF，将工程同步到 Thunder-Agent 的 GitHub 仓库并发布远程可访问地址。</p>
+        <div class="summary">
+          <div class="summary-card"><strong>12</strong>关键截图证据</div>
+          <div class="summary-card"><strong>4</strong>主导航页面</div>
+          <div class="summary-card"><strong>5</strong>高优先级建议</div>
+          <div class="summary-card"><strong>1</strong>静态 H5 工程</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>二、审计范围</h2>
+        <p>审计覆盖首页、打卡、服务、我的、添加孩子表单，以及年度分析报告、健康测评、健康档案、记录时光等入口的未添加孩子状态。审计过程中没有填写儿童敏感信息，没有允许定位，没有提交表单，没有上传、支付或删除数据。</p>
+      </section>
+
+      <section>
+        <h2>三、截图证据总览</h2>
+        <img class="evidence" src="assets/screenshots/contact-sheet.png" alt="小程序审计截图总览" />
+        <p class="meta">图：本轮审计捕获的 12 个关键页面状态。</p>
+      </section>
+
+      <section>
+        <h2>四、步骤健康度</h2>
+        <table>
+          <thead>
+            <tr><th>步骤</th><th>页面/状态</th><th>健康度</th><th>说明</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>首页</td><td>中等</td><td>视觉亲和，核心入口清晰，但空状态说明不足。</td></tr>
+            <tr><td>2</td><td>打卡页</td><td>中等偏弱</td><td>有每日目标和饮食打卡，但无孩子/无目标时缺少下一步。</td></tr>
+            <tr><td>3</td><td>服务页定位弹窗</td><td>弱</td><td>刚进入服务页即请求定位，授权时机偏早。</td></tr>
+            <tr><td>4</td><td>服务页内容</td><td>中等</td><td>内容以科普文章为主，与“服务”命名有预期差。</td></tr>
+            <tr><td>5</td><td>我的页</td><td>较好</td><td>添加孩子、设备、签到、积分等入口完整。</td></tr>
+            <tr><td>6</td><td>我的页下半部分</td><td>较好</td><td>订单、方案、报告、儿保记录、客服、反馈等支撑入口齐全。</td></tr>
+            <tr><td>7</td><td>添加孩子</td><td>弱</td><td>首屏要求儿童身份证号，但缺少用途和隐私说明。</td></tr>
+            <tr><td>8</td><td>报告/测评/档案/相册入口</td><td>中等</td><td>有阻断弹窗，但多个入口使用同一文案，功能价值不够具体。</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>五、主要发现</h2>
+        <h3>1. 首次体验被“先添加孩子”卡住</h3>
+        <p>首页绝大多数核心功能都依赖添加孩子，但页面没有充分解释添加孩子后能获得什么，也没有展示可先体验的轻量路径。用户会在“被要求交资料”前缺少明确收益感。</p>
+
+        <h3>2. 儿童身份证号字段信任成本高</h3>
+        <p>添加孩子页要求照片、姓名、昵称、身份证号、性别、生日。对儿童健康产品而言，身份证号是高敏感信息，必须说明用途、保存方式、是否必填和隐私保护措施。</p>
+
+        <h3>3. 阻断弹窗泛化</h3>
+        <p>年度报告、健康测评、健康档案、记录时光都使用同一“添加宝宝后可获得”弹窗。这样能降低开发成本，但会削弱每个功能的独立价值说明。</p>
+
+        <h3>4. 定位授权请求过早</h3>
+        <p>服务页进入即弹出定位授权，而当前服务页主要显示科普内容。用户没有看到位置权限的直接价值，容易拒绝或降低信任。</p>
+
+        <h3>5. 打卡页空状态引导不足</h3>
+        <p>打卡页出现每日目标、一键打卡和饮食打卡，但没有孩子信息时，页面没有明确说明要先设置什么、为什么现在不能完成完整打卡。</p>
+      </section>
+
+      <section>
+        <h2>六、优先级建议</h2>
+        <div class="priority">
+          <article><span class="tag">P0</span><strong>补充添加孩子页隐私说明。</strong><p>如果身份证号不是强制，建议改为非必填；如果强制，必须说明用途和数据保护方式。</p></article>
+          <article><span class="tag">P1</span><strong>重写首页空状态。</strong><p>在“添加孩子”附近说明添加后可生成成长档案、测评结果和身高管理建议。</p></article>
+          <article><span class="tag">P1</span><strong>为四个核心入口定制阻断文案。</strong><p>报告、测评、档案、相册分别说明需要哪些信息、添加后会看到什么结果。</p></article>
+          <article><span class="tag">P2</span><strong>延后定位授权。</strong><p>等用户点击附近机构、线下服务或预约入口时，再解释并请求定位。</p></article>
+          <article><span class="tag">P2</span><strong>优化打卡页无目标状态。</strong><p>提示“先添加孩子并设置成长目标”，弱化或禁用一键打卡。</p></article>
+        </div>
+      </section>
+
+      <section>
+        <h2>七、可访问性风险</h2>
+        <ul>
+          <li>部分浅灰小字对比度偏低，例如“记录宝贝成长时光”和文章时间。</li>
+          <li>图标按钮较多，截图无法证明是否有可读标签，需要开发工具继续检查。</li>
+          <li>弹窗卖点文字较小，老年家长或低视力用户阅读压力较大。</li>
+          <li>仅凭截图无法确认读屏顺序、键盘焦点和触控目标尺寸。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>八、H5 复刻说明</h2>
+        <p>H5 工程以静态方式复刻小程序主要界面，包含底部导航切换、添加孩子表单页、未添加孩子弹窗、服务页定位弹窗模拟和提示 Toast。复刻不连接真实后端，不保存儿童信息，不调用真实定位，不产生外部数据提交。</p>
+      </section>
+
+      <footer>
+        <p>结论：小程序主功能方向清楚，但需要先解决敏感信息信任、空状态引导和权限请求时机问题，才能降低首次使用流失。</p>
+      </footer>
+    </main>
+  </body>
+</html>
